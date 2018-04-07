@@ -3,6 +3,7 @@
 
 import logging
 
+import os
 import tornado.ioloop
 import tornado.options
 import tornado.web
@@ -38,6 +39,7 @@ class Application(tornado.web.Application):
 
 
 def main():
+    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "liveface.settings")
     tornado.options.parse_command_line()
     app = Application()
     app.listen(options.port)

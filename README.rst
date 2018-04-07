@@ -17,7 +17,7 @@ Installation
 
    * Now we need to run tornado server for create websocket ::
 
-      python liveface/websocket.py #It may be show popup for allow or not firewall , So click on allow to run websocket
+      python websocket.py #It may be show popup for allow or not firewall , So click on allow to run websocket
 
    *  Now run Django project using below command ::
 
