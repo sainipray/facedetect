@@ -2,15 +2,15 @@
 {% block content %}
     <div class="col s4">
             <div class="collection">
-                <a href="{% url 'face-detect:image' %}" class="collection-item active">Simple Face Detection</a>
-                <a href="{% url 'face-detect:live_video' %}" class="collection-item">Live Face Detection</a>
+                <a href="{% url 'image' %}" class="collection-item active">Simple Face Detection</a>
+                <a href="{% url 'live_video' %}" class="collection-item">Live Face Detection</a>
             </div>
         </div>
     <div class="col s6">
         <div class="card">
             <div class="card-content center-align">
                 <form method="post" id="form-image" enctype="multipart/form-data"
-                      action="{% url 'face-detect:image' %}">
+                      action="{% url 'image' %}">
                     {% csrf_token %}
                     <h4 class="center"><u>Live Video</u></h4>
                     <video id="video" width="600" height="450" autoplay></video>

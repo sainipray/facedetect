@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
-
+ 
 from django.core.files.storage import FileSystemStorage
 from django.http import JsonResponse
 from django.views.generic import TemplateView
 
-from main.detect import get_face_detect_data
+from .py_files.detect import get_face_detect_data
 
 
 def upload_file(image):
