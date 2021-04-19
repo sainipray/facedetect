@@ -2,8 +2,8 @@
 {% block content %}
     <div class="col s4">
         <div class="collection">
-            <a href="{% url 'face-detect:image' %}" class="collection-item">Simple Face Detection</a>
-            <a href="{% url 'face-detect:live_video' %}" class="collection-item active">Live Face Detection</a>
+            <a href="{% url 'image' %}" class="collection-item">Simple Face Detection</a>
+            <a href="{% url 'live_video' %}" class="collection-item active">Live Face Detection</a>
         </div>
     </div>
     <div class="col s6">
@@ -21,7 +21,8 @@
 {% endblock %}
 {% block js %}
     <script type="text/javascript">
-        var socket = new WebSocket('ws://localhost:8001/websocket');
+
+        var socket = new WebSocket('ws://localhost:8888/websocket');
 
         $(document).ready(function () {
             let video = document.getElementById('video');
@@ -54,6 +55,7 @@
                     draw_context.drawImage(image, 0, 0, 600, 450);
                 };
                 image.src = e.data;
+                //console.log(image.src)
                 drawCanvas();
             };
         })

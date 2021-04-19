@@ -1,50 +1,34 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
-import logging
-
-import os
-import tornado.ioloop
-import tornado.options
-import tornado.web
+import tornado.httpserver
 import tornado.websocket
-from tornado.options import define, options
+import tornado.ioloop
+import tornado.web
+import socket
 
-define("port", default=8001, help="run on the given port", type=int)
-
-class MainHandler(tornado.websocket.WebSocketHandler):
-    def check_origin(self, origin):
-        return True
-
+class WSHandler(tornado.websocket.WebSocketHandler):
     def open(self):
-        logging.info("A client connected.")
-
-    def on_close(self):
-        logging.info("A client disconnected")
-
+        print ('new connection')
+      
     def on_message(self, message):
-        from main.detect import get_face_detect_data
+        from sub_app.py_files.detect import get_face_detect_data
         image_data = get_face_detect_data(message)
         if not image_data:
             image_data = message
         self.write_message(image_data)
-
-
-
-class Application(tornado.web.Application):
-    def __init__(self):
-        handlers = [(r"/websocket", MainHandler)]
-        settings = dict(debug=True)
-        tornado.web.Application.__init__(self, handlers, **settings)
-
-
-def main():
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "liveface.settings")
-    tornado.options.parse_command_line()
-    app = Application()
-    app.listen(options.port)
-    tornado.ioloop.IOLoop.instance().start()
-
-
+ 
+    def on_close(self):
+        print ('connection closed')
+ 
+    def check_origin(self, origin):
+        return True
+ 
+application = tornado.web.Application([
+    (r'/websocket', WSHandler),
+])
+ 
+ 
 if __name__ == "__main__":
-    main()
+    http_server = tornado.httpserver.HTTPServer(application)
+    http_server.listen(8888)
+    myIP = socket.gethostbyname(socket.gethostname())
+    print ('*** Websocket Server Started at %s***' % myIP)
+    tornado.ioloop.IOLoop.instance().start()
