@@ -1,4 +1,4 @@
-======================================
+
 Live Face Detection using Opencv with Django or Tornado Framework
 ======================================
 
@@ -26,9 +26,9 @@ Installation
 
    * Now you can access project ::
 
-     http://127.0.0.1:8000/image/  # for detect face from image
+     http://127.0.0.1:8000/image/  #  detect face from image
 
-     http://127.0.0.1:8000/video/  # for detect face from live webcam
+     http://127.0.0.1:8000/video/  #  detect face from live webcam
 
    * **Note**  
     If you are on a windows machine, you can open two terminal one for websocket and the other for django server.     
