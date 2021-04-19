@@ -33,3 +33,4 @@ class LiveVideoFaceDetect(TemplateView):
 
     def post(self, request, *args, **kwargs):
         return JsonResponse(status=200, data={'message': 'Face detected'})
+
