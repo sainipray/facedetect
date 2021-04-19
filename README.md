@@ -9,7 +9,7 @@ Installation
 
    * Please make sure you already installed Python3 and pip in your system, then Clone this repository ::
 
-    git clone https://github.com/sainipray/facedetect.git
+    git clone https://github.com/talhaanwarch/facedetect.git
 
    * Now install requirements of python libraries ::
 
