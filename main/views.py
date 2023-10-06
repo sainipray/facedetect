@@ -20,12 +20,9 @@ class ImageFaceDetect(TemplateView):
 
     def post(self, request, *args, **kwargs):
         data = request.POST.get('image')
-        try:
-            image_data = get_face_detect_data(data)
-            if image_data:
-                return JsonResponse(status=200, data={'image': image_data, 'message': 'Face detected'})
-        except Exception as e:
-            pass
+        image_data = get_face_detect_data(data)
+        if image_data:
+            return JsonResponse(status=200, data={'image': image_data, 'message': 'Face detected'})
         return JsonResponse(status=400, data={'errors': {'error_message': 'No face detected'}})
 
 

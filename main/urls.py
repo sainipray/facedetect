@@ -1,8 +1,10 @@
-from django.conf.urls import url
+from django.urls import path
 
 from main.views import ImageFaceDetect, LiveVideoFaceDetect
 
+app_name = 'face-detect'
+
 urlpatterns = [
-    url(r'^face-detect/image/$', ImageFaceDetect.as_view(), name='image'),
-    url(r'^face-detect/video/$', LiveVideoFaceDetect.as_view(), name='live_video'),
+    path('face-detect/image/', ImageFaceDetect.as_view(), name='image'),
+    path('face-detect/video/', LiveVideoFaceDetect.as_view(), name='live_video'),
 ]

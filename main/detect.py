@@ -17,12 +17,12 @@ detector = dlib.get_frontal_face_detector()
 
 def base64_decode(data):
     format, imgstr = data.split(';base64,')
-    return imgstr.decode('base64')
+    return base64.b64decode(imgstr)
 
 
 def base64_encode(data):
     if data:
-        return 'data:image/png;base64,' + data
+        return 'data:image/png;base64,' + data.decode()
 
 
 def get_face_detect_data(data):
